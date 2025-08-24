@@ -55,6 +55,19 @@ app.get("/personagens/raca/:raca", (req, res) => {
             mensagem : "Raça não encontrado"
         })
     }
+});
+
+app.get("/personagens/vivo/sim", (req, res) => {
+
+    const personagensVivos = personagens.filter(b => b.vivo === true); 
+    
+    if (personagensVivos) { 
+        res.status(200).json(personagensVivos) 
+    } else { 
+        res.status(404).json({
+            mensagem: "Não há bruxos vivos" 
+        }) 
+    }
 })
 
 app.listen(serverPort, () => {
